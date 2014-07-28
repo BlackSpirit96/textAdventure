@@ -125,9 +125,49 @@ def room_3(inventory):
 			print_text(message)
 		else:
 			print_text("%r isn't a valid action!" % action)
+
 def room_4(inventory):
-	pass
+	room_title = 'Treasure Romm'
+	message = """
+	Just WoW ! The room is made of gold !!!!
+	There is a pile of gold (treasure) the door that leads you back to the
+	Hallway and also a small passage.
+	"""
+	win_text = """
+	You take the treasure and you leave peacefully the castle.
+	But after you leave the castle dissapears and you didn't learned all
+	the secrets about it. Long time latter you regret about it thinking that it
+	may have been more treasure. You greedy monster.
+	"""
+	passage_text = """
+	That passage leads to the underground. You fall to the underground
+	and you accelerate !!!!!!! Dead end. You die.
+	"""
 	
+	
+	print_text(message)
+	
+	while True:
+		action = raw_input('> ')
+		
+		if 'door' in action:
+			print_text('You "%s" and you procced to the next room' % action)
+			room_2(inventory)
+		elif 'take' in action and 'treasure' in action:
+			print_text(win_text)
+			exit(0)
+		elif 'search' in action and 'treasure' in action and not "Black Key" in inventory:
+			print_text("You have found a black key. Where will it lead ?")
+			inventory.append("Black Key")
+		elif "passage":
+			died(passage_text, action)
+		elif 'where' in action:
+			print_text("You're in %s!" % room_title)
+		elif 'info' in action:
+			print_text(message)
+		else:
+			print_text("%r isn't a valid action!" % action)
+			
 def room_5(inventory):
 	pass
 	
