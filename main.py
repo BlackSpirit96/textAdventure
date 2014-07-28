@@ -57,7 +57,7 @@ def room_2(inventory):
 	
 	while True:
 		
-		action = action = raw_input("> ")
+		action = raw_input("> ")
 		
 		if 'open' in action and 'door' in action and 'yellow' in action:
 			print_text('You "%s" and you procced to the next room' % action)
@@ -87,8 +87,44 @@ def room_2(inventory):
 			print_text("%r isn't a valid action!" % action)
 		
 def room_3(inventory):
-	pass
+	room_title = "Storage Room"
+	message = """
+	You entered in a room without windows, it will be probable the storage room.
+	There are stairs that lead down and the door to get back to the Hallway. There is
+	also a big wooden box and a pile of papers on the ground.
+	"""
+	note_text = """
+	You found a secret note.
+				*****************************
+		There are varius secrets in the game. You should search them, 
+	but there are not too hard to figure out.
+				*****************************
+	"""
+	box_text = """
+	https://www.youtube.com/watch?v=dQw4w9WgXcQ
+	"""
 	
+	print_text(message)
+	
+	while True:
+		action = raw_input("> ")
+		
+		if 'open' in action and 'door' in action:
+			print_text('You "%s" and you procced to the next room' % action)
+			room_2(inventory)
+		elif 'stairs':
+			print_text('You "%s" and you procced to the next room' % action)
+			room_5(inventory)
+		elif 'search' in action and 'pile' in action:
+			print_text(note_text)
+		elif 'box':
+			print_text(box_text)
+		elif 'where' in action:
+			print_text("You're in %s!" % room_title)
+		elif 'info' in action:
+			print_text(message)
+		else:
+			print_text("%r isn't a valid action!" % action)
 def room_4(inventory):
 	pass
 	
